@@ -12,22 +12,10 @@
 ##  See the License for the specific language governing permissions and
 ##  limitations under the License.
 
-ACLOCAL_AMFLAGS = -I .
-
-EXTRA_DIST = regen-acinclude.sh README
-
-DIST_SUBDIRS = t darwin linux
-
-SUBDIRS = @ux_kern@ . t
-
-dist_doc_DATA = LICENSE-2.0
-
 LDFLAGS = -Xlinker -r
 
 startlibdir = @libdir@
 
-startlib_PROGRAMS = crtbegin.o
+startlib_PROGRAMS = crt0.o
 
-crtbegin_o_CPPFLAGS = @AM_CPPFLAGS@ @UX_CPPFLAGS@
-
-crtbegin_o_SOURCES = begin.c
+crt0_o_SOURCES = start.S

@@ -77,7 +77,7 @@ case "$host_os" in
 		ux_kern=darwin
 		;;
 	*)
-		ux_kern="$host_os"
+		AC_MSG_ERROR([kernel $host_os is not supported])
 		;;
 esac
 AC_SUBST([ux_kern])
@@ -88,6 +88,8 @@ case "$host_cpu" in
 	i[3456]86|ix86|x86)
 		ux_arch=x86
 		;;
+	*)
+		AC_MSG_ERROR([architecture $host_cpu is not supported])
 esac
 AC_SUBST([ux_arch])
 
@@ -95,6 +97,8 @@ AC_CONFIG_FILES([Makefile
 t/Makefile
 darwin/Makefile
 darwin/x86-64/Makefile
+linux/Makefile
+linux/x86-64/Makefile
 ])
 
 AC_OUTPUT
